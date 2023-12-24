@@ -4,6 +4,7 @@ import { Card, CardFooter, CardBody, Image } from "@nextui-org/react";
 import PlatformIconList from "./PlatformIconList";
 import CriticStore from "./CriticStore";
 import ImageUrl from "../assets/no-image-placeholder-6f3882e0.webp";
+import Emoji from "./Emoji";
 
 interface Props {
   game: Game;
@@ -11,21 +12,21 @@ interface Props {
 
 const GameCard = ({ game }: Props) => {
   return (
-    <Card shadow="sm" className="h-72">
+    <Card shadow="sm" className="h-80">
     <CardBody className="overflow-visible p-0">
       <Image
         width="100%"
         alt={game.name}
-        className="w-full object-cover rounded-none h-48"
+        className="w-full object-cover rounded-none h-56"
         src={game.background_image ? game.background_image : ImageUrl}
       />
     </CardBody>
     <CardFooter className="flex flex-col items-start justify-center">
-       <h4 className="font-bold text-xl">{game.name}</h4>
-       <div className="flex w-full justify-between flex-wrap">
+      <div className="flex w-full justify-between flex-wrap mb-2">
         <PlatformIconList platforms={game.parent_platforms.map(p => p.platform)}/>
         {game.metacritic && <CriticStore score={game.metacritic}/>}
       </div>
+      <h4 className="font-bold text-xl mb-3 flex">{game.name} <Emoji rating={game.rating_top}/></h4>
     </CardFooter>
   </Card>
   );

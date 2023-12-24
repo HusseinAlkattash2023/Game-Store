@@ -14,6 +14,7 @@ const GenreList = ({onSelectedGenre}:Props) => {
   if(error) return null;
   return (
     <div className="mt-2 ml-4">
+      <h1 className="text-3xl font-bold ml-3">Genres</h1>
       <div className="px-1 py-2">
         <div className=" flex flex-col items-start">
           {loading &&
@@ -36,7 +37,7 @@ const GenreList = ({onSelectedGenre}:Props) => {
                   src={getCroppedImageUrl(genre.image_background)}
                   className="w-10 h-10 rounded-lg"
                 />
-                <span className="ml-4 text-lg">{genre.name}</span>
+                <span className="ml-4 text-lg whitespace-normal">{genre.name}</span>
               </div>
             </ListboxItem>
           ))}
