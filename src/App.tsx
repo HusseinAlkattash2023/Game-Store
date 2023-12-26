@@ -7,6 +7,7 @@ import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/usePlatforms";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
+import GenreListDrop from "./components/GenreListDrop";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -41,6 +42,12 @@ const App = () => {
               setGameQuery({ ...gameQuery, sortOrder })
             }
           />
+          <div className="w-[240px] lg:!hidden sm:!flex hidden ml-3">
+            <GenreListDrop  onSelectedGenre={(genre) => setGameQuery({ ...gameQuery, genre })}/>
+          </div>
+        </div>
+        <div className="w-full mt-4 sm:!hidden flex">
+            <GenreListDrop  onSelectedGenre={(genre) => setGameQuery({ ...gameQuery, genre })}/>
         </div>
         <GameGrid gameQuery={gameQuery} />
       </div>

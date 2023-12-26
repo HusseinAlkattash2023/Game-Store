@@ -12,9 +12,10 @@ interface Props {
 const GameGrid = ({ gameQuery }: Props) => {
   const { data, error, loading } = useGames(gameQuery);
   const skeleton = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  if(error) return (<p>{error}</p>)
+
   return (
-    <>
-      {error && <p>{error}</p>}
       <div className="grid grid-cols-12 gap-4 pt-4">
         {loading
           ? skeleton.map((id) => (
@@ -34,7 +35,6 @@ const GameGrid = ({ gameQuery }: Props) => {
               </div>
             ))}
       </div>
-    </>
   );
 };
 
